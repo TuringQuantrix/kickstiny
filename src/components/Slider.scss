@@ -1,0 +1,45 @@
+@use "~@destinygg/libstiny" as dgg;
+
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 1.25rem;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  pointer-events: auto;
+
+  &__track {
+    position: relative;
+    flex-grow: 1;
+    height: 3px;
+    border-radius: dgg.$semantic-radii-pill;
+    background-color: dgg.$semantic-foreground-subtle;
+  }
+
+  &__range {
+    position: absolute;
+    height: 100%;
+    border-radius: dgg.$semantic-radii-pill;
+    background-color: dgg.$semantic-foreground-default;
+  }
+
+  &__thumb {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 10px;
+    background-color: dgg.$semantic-foreground-default;
+    outline: none;
+
+    &:hover {
+      cursor: grab;
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}

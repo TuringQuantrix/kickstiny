@@ -1,0 +1,21 @@
+@use "~@destinygg/libstiny" as dgg;
+
+@use "./components/Tooltip.scss";
+@use "./components/Dropdown.scss";
+@use "./components/Slider.scss";
+
+@use "./controls/bar/ControlsBar.scss";
+@use "./controls/info/ChannelInfo.scss";
+@use "./controls/volume/VolumeControls.scss";
+
+.kickstiny-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 1000;
+
+  .controls-bar {
+    position: absolute;
+    inset-inline: dgg.$space-4;
+    inset-block: auto dgg.$space-4;
+  }
+}

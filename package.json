@@ -1,0 +1,32 @@
+{
+  "name": "kickstiny",
+  "version": "1.0.0",
+  "description": "Replaces the controls in the Kick embedded player with custom controls that offer a volume slider, quality selector, and more.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js --prod",
+    "dev": "concurrently \"node build.js --watch\" \"node dev/http.js\" --names \"build,server\" --prefix-colors \"blue,green\""
+  },
+  "dependencies": {
+    "@destinygg/libstiny": "^1.8.1",
+    "@number-flow/react": "^0.5.10",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-slider": "^1.2.0",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.555.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "simple-icons": "^16.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "esbuild": "^0.19.0",
+    "esbuild-css-modules-plugin": "^3.1.5",
+    "prettier": "^3.7.2",
+    "sass": "^1.94.2"
+  },
+  "author": "Destinygg",
+  "license": "MIT"
+}

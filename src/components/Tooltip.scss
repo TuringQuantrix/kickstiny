@@ -1,0 +1,15 @@
+@use "~@destinygg/libstiny" as dgg;
+
+.tooltip {
+  background-color: dgg.$palette-neutral-12;
+  color: dgg.$palette-neutral-1;
+  font: dgg.$body-100-semi-bold;
+  padding-inline: dgg.$space-2;
+  padding-block: dgg.$space-1;
+  border-radius: dgg.$semantic-radii-x-small;
+  z-index: 1000;
+
+  &__arrow {
+    fill: dgg.$palette-neutral-12;
+  }
+}

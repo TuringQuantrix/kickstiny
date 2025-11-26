@@ -1,0 +1,28 @@
+@use "~@destinygg/libstiny" as dgg;
+@use "@destinygg/libstiny/lib/utils/transitions" as transitions;
+@use "../../components/Slider.scss" as slider;
+
+.volume-controls {
+  display: flex;
+  align-items: center;
+  gap: dgg.$space-1;
+
+  &:hover {
+    .slider {
+      opacity: 1;
+    }
+  }
+
+  .slider {
+    opacity: 0;
+    @include transitions.create-transition(opacity, default);
+  }
+}
+
+@media (max-width: 410px) {
+  .volume-controls {
+    .slider {
+      display: none !important;
+    }
+  }
+}

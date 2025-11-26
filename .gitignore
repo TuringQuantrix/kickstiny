@@ -1,0 +1,4 @@
+node_modules/
+dist/
+kickstiny.user.js
+.DS_Store

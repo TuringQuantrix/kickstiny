@@ -1,0 +1,62 @@
+@use "~@destinygg/libstiny" as dgg;
+
+.channel-info {
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: dgg.$space-2;
+
+  &__username {
+    font: dgg.$mono-200-bold;
+    display: flex;
+    align-items: center;
+    gap: dgg.$space-1;
+  }
+
+  &__username-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 20ch;
+  }
+
+  &__live-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: dgg.$semantic-radii-pill;
+    background-color: dgg.$palette-danger-7;
+    animation: pulse-red 5s ease-in-out infinite;
+  }
+
+  &__meta {
+    font: dgg.$mono-200-regular;
+    color: dgg.$semantic-foreground-subtle;
+    display: flex;
+    align-items: center;
+    gap: dgg.$space-1;
+  }
+}
+
+@keyframes pulse-red {
+  0%,
+  100% {
+    background-color: dgg.$palette-danger-7;
+  }
+  50% {
+    background-color: dgg.$palette-danger-9;
+  }
+}
+
+@media (max-width: 840px) {
+  .channel-info {
+    &__meta {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .channel-info {
+    display: none;
+  }
+}

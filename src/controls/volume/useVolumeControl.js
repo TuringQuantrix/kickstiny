@@ -1,0 +1,58 @@
+import { useState, useCallback, useEffect } from "react";
+import { usePreferences } from "../usePreferences.js";
+
+function clampVolume(volume) {
+  return Math.max(0, Math.min(100, volume));
+}
+
+function normalizeVolume(volume) {
+  return clampVolume(volume) / 100;
+}
+
+export function useVolumeControl(core) {
+  const { savedVolume, setSavedVolume } = usePreferences();
+  const [volume, setVolume] = useState(savedVolume);
+  const [isMuted, setIsMuted] = useState(false);
+
+  const handleVolumeChange = useCallback(
+    (newVolume) => {
+      const clampedVolume = clampVolume(newVolume);
+      setVolume(clampedVolume);
+      setSavedVolume(clampedVolume);
+      core.setVolume(normalizeVolume(clampedVolume));
+      core.setMuted(clampedVolume === 0);
+      setIsMuted(clampedVolume === 0);
+    },
+    [core, setSavedVolume]
+  );
+
+  const handleMuteToggle = useCallback(() => {
+    setVolume(isMuted ? savedVolume : 0);
+    setIsMuted(!isMuted);
+    core.setMuted(!isMuted);
+  }, [core, isMuted, savedVolume]);
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (event.data?.arg?.key === "muted") {
+        const newMuted = event.data.arg.value;
+        if (newMuted !== isMuted) {
+          setIsMuted(newMuted);
+          setVolume(newMuted ? 0 : savedVolume);
+        }
+      }
+    };
+
+    core.worker.addEventListener("message", handler);
+    return () => {
+      core.worker.removeEventListener("message", handler);
+    };
+  }, [core, savedVolume, isMuted]);
+
+  return {
+    volume,
+    isMuted,
+    handleVolumeChange,
+    handleMuteToggle,
+  };
+}
