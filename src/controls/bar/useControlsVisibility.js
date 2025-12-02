@@ -100,8 +100,19 @@ export function useControlsVisibility(container, controlsBarRef) {
     if (!container) return;
 
     const handleMouseMove = (e) => {
+      const isOverContainer = container.contains(e.target);
+      const isOverControls =
+        controlsBarRef.current && controlsBarRef.current.contains(e.target);
+
+      // If mouse is over container but isHovered is false, set it to true
+      // This handles the case where mouse was already over container on page load
+      if (!isHoveredRef.current && isOverContainer) {
+        setIsHovered(true);
+        setIsInactive(false);
+      }
+
       // Don't reset timeout if mouse is over controls bar
-      if (controlsBarRef.current && controlsBarRef.current.contains(e.target)) {
+      if (isOverControls) {
         return;
       }
 
