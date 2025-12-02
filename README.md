@@ -19,6 +19,8 @@ Jegon: WTF IS THIS KICK EMBED BRO
 
 A userscript that replaces the controls in the Kick embedded player with custom controls that offer a volume slider, quality selector, and more.
 
+![Controls Bar](img/controls-bar.png)
+
 ## Installation
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/) for your web browser
