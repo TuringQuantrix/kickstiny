@@ -62,7 +62,7 @@ const buildOptions = {
                       process.cwd(),
                       "node_modules",
                       pkgPath,
-                      "lib/index.scss"
+                      "lib/index.scss",
                     );
                     return new URL(`file://${fullPath}`);
                   }

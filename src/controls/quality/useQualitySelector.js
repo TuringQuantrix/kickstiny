@@ -31,7 +31,7 @@ export function useQualitySelector(core) {
 
       setSavedQuality(value);
     },
-    [core, qualities, setSavedQuality]
+    [core, qualities, setSavedQuality],
   );
 
   useEffect(() => {

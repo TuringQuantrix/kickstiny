@@ -41,7 +41,8 @@ export default function QualityButton({ core, container }) {
                   value={option.value}
                   className={clsx(
                     "dropdown__item",
-                    selectedQuality === option.value && "dropdown__item--active"
+                    selectedQuality === option.value &&
+                      "dropdown__item--active",
                   )}
                 >
                   {option.label}

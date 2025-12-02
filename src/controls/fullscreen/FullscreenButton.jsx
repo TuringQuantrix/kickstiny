@@ -21,9 +21,7 @@ export default function FullscreenButton({ isFullscreen, onFullscreenToggle }) {
         </Button>
       </Tooltip.Trigger>
       <Tooltip.Portal>
-        <ControlsTooltip>
-          {label} (F)
-        </ControlsTooltip>
+        <ControlsTooltip>{label} (F)</ControlsTooltip>
       </Tooltip.Portal>
     </Tooltip.Root>
   );

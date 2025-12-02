@@ -33,7 +33,7 @@ export function useChannelInfo() {
           if (data.livestream.start_time) {
             console.debug(
               "[Kickstiny] Stream start time is",
-              data.livestream.start_time
+              data.livestream.start_time,
             );
             setStartTime(data.livestream.start_time);
             const initialUptime = formatUptime(data.livestream.start_time);
@@ -57,7 +57,7 @@ export function useChannelInfo() {
 
           viewerCountIntervalRef.current = setInterval(
             updateViewerCount,
-            60000
+            60000,
           );
         }
       } catch (error) {

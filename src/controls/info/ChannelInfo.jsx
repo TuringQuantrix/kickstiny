@@ -10,7 +10,7 @@ export default function ChannelInfo({ username, viewerCount, uptime }) {
       <span className="channel-info__username">
         <span className="channel-info__live-dot" />
         {username}
-      </span>
+      </span>,
     );
   }
 
@@ -19,7 +19,7 @@ export default function ChannelInfo({ username, viewerCount, uptime }) {
       <span className="channel-info__meta">
         <Users size={12} strokeWidth={3} />
         <NumberFlow value={viewerCount} />
-      </span>
+      </span>,
     );
   }
 
@@ -28,7 +28,7 @@ export default function ChannelInfo({ username, viewerCount, uptime }) {
       <span className="channel-info__meta">
         <Clock size={12} strokeWidth={3} />
         {uptime}
-      </span>
+      </span>,
     );
   }
 

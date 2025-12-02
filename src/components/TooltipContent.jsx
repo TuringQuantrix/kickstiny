@@ -3,7 +3,7 @@ import * as Tooltip from "@radix-ui/react-tooltip";
 
 export default React.forwardRef(function TooltipContent(
   { children, ...props },
-  ref
+  ref,
 ) {
   return (
     <Tooltip.Content ref={ref} className="tooltip" {...props}>

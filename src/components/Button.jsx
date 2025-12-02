@@ -30,14 +30,14 @@ const buttonVariants = cva("button", {
 
 const Button = React.forwardRef(function Button(
   { variant, size, fullWidth, iconOnly, className, children, ...props },
-  ref
+  ref,
 ) {
   return (
     <button
       ref={ref}
       className={clsx(
         buttonVariants({ variant, size, fullWidth, iconOnly }),
-        className
+        className,
       )}
       {...props}
     >

@@ -24,7 +24,7 @@ export function useVolumeControl(core) {
       core.setMuted(clampedVolume === 0);
       setIsMuted(clampedVolume === 0);
     },
-    [core, setSavedVolume]
+    [core, setSavedVolume],
   );
 
   const handleMuteToggle = useCallback(() => {

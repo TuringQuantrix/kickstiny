@@ -1,6 +1,6 @@
 export async function fetchChannelInfo(username) {
   const response = await fetch(
-    `https://kick.com/api/v2/channels/${username}/info`
+    `https://kick.com/api/v2/channels/${username}/info`,
   );
 
   if (!response.ok) {
@@ -12,7 +12,7 @@ export async function fetchChannelInfo(username) {
 
 export async function fetchViewerCount(livestreamId) {
   const response = await fetch(
-    `https://kick.com/current-viewers?ids[]=${livestreamId}`
+    `https://kick.com/current-viewers?ids[]=${livestreamId}`,
   );
 
   if (!response.ok) {

@@ -27,7 +27,7 @@
         console.error(
           "Failed to load script:",
           response.status,
-          response.statusText
+          response.statusText,
         );
       }
     },

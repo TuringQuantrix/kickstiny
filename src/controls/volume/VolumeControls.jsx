@@ -28,9 +28,7 @@ export default function VolumeControls({
           </Button>
         </Tooltip.Trigger>
         <Tooltip.Portal>
-          <ControlsTooltip>
-            {label} (M)
-          </ControlsTooltip>
+          <ControlsTooltip>{label} (M)</ControlsTooltip>
         </Tooltip.Portal>
       </Tooltip.Root>
 

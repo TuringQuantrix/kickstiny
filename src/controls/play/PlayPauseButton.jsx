@@ -21,9 +21,7 @@ export default function PlayPauseButton({ isPlaying, onPlayPause }) {
         </Button>
       </Tooltip.Trigger>
       <Tooltip.Portal>
-        <ControlsTooltip>
-          {label} (Space)
-        </ControlsTooltip>
+        <ControlsTooltip>{label} (Space)</ControlsTooltip>
       </Tooltip.Portal>
     </Tooltip.Root>
   );

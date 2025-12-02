@@ -8,7 +8,7 @@ export default function Container({ core, videoContainer }) {
   const barRef = useRef(null);
   const { shouldShow, showControls } = useControlsVisibility(
     containerRef,
-    barRef
+    barRef,
   );
   const { isPlaying, handlePlayPause } = usePlaybackControl(core);
 

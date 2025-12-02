@@ -18,7 +18,7 @@ const server = createServer((req, res) => {
         "Content-Type": "text/plain; charset=utf-8",
       });
       res.end(
-        'Error: kickstiny.user.js not found. Please run "npm run dev" first.'
+        'Error: kickstiny.user.js not found. Please run "npm run dev" first.',
       );
       return;
     }
