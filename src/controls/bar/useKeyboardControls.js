@@ -5,6 +5,7 @@ export function useKeyboardControls({
   onMuteToggle,
   onFullscreenToggle,
   container,
+  showControls,
 }) {
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -14,14 +15,17 @@ export function useKeyboardControls({
       switch (key) {
         case " ": // Spacebar
           event.preventDefault();
+          showControls();
           onPlayPause();
           break;
         case "m":
           event.preventDefault();
+          showControls();
           onMuteToggle();
           break;
         case "f":
           event.preventDefault();
+          showControls();
           onFullscreenToggle();
           break;
         default:
@@ -35,5 +39,5 @@ export function useKeyboardControls({
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [container, onPlayPause, onMuteToggle, onFullscreenToggle]);
+  }, [container, onPlayPause, onMuteToggle, onFullscreenToggle, showControls]);
 }

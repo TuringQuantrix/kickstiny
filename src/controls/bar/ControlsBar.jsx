@@ -19,6 +19,7 @@ export default function ControlsBar({
   barRef,
   isPlaying,
   handlePlayPause,
+  showControls,
 }) {
   const { volume, isMuted, handleVolumeChange, handleMuteToggle } =
     useVolumeControl(core);
@@ -31,6 +32,7 @@ export default function ControlsBar({
     onMuteToggle: handleMuteToggle,
     onFullscreenToggle: handleFullscreenToggle,
     container: videoContainer,
+    showControls,
   });
 
   return (

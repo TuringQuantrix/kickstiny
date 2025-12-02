@@ -135,6 +135,13 @@ export function useControlsVisibility(containerRef, controlsBarRef) {
     };
   }, [isHovered, startInactivityTimer, clearInactivityTimer]);
 
+  const showControls = useCallback(() => {
+    setIsHovered(true);
+    setIsInactive(false);
+    clearInactivityTimer();
+    startInactivityTimer();
+  }, [clearInactivityTimer, startInactivityTimer]);
+
   // Calculate visibility
   // Show only when hovering over video AND (hovering over controls OR not inactive)
   const shouldShow = isHovered && (isHoveringControls || !isInactive);
@@ -157,5 +164,5 @@ export function useControlsVisibility(containerRef, controlsBarRef) {
     };
   }, [isHovered, shouldShow]);
 
-  return { shouldShow };
+  return { shouldShow, showControls };
 }

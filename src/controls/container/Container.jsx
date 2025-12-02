@@ -6,7 +6,10 @@ import { usePlaybackControl } from "../play/usePlaybackControl.js";
 export default function Container({ core, videoContainer }) {
   const containerRef = useRef(null);
   const barRef = useRef(null);
-  const { shouldShow } = useControlsVisibility(containerRef, barRef);
+  const { shouldShow, showControls } = useControlsVisibility(
+    containerRef,
+    barRef
+  );
   const { isPlaying, handlePlayPause } = usePlaybackControl(core);
 
   const handleContainerClick = (e) => {
@@ -29,6 +32,7 @@ export default function Container({ core, videoContainer }) {
         barRef={barRef}
         isPlaying={isPlaying}
         handlePlayPause={handlePlayPause}
+        showControls={showControls}
       />
     </div>
   );
