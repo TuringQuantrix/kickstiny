@@ -61,7 +61,10 @@ export default function SettingsButton({ core, container, shouldShow }) {
             onClick={(e) => e.stopPropagation()}
           >
             {currentMenu === MENU_MAIN && (
-              <MainMenu onNavigateQuality={navigateToQuality} />
+              <MainMenu
+                onNavigateQuality={navigateToQuality}
+                selectedQuality={selectedQuality}
+              />
             )}
 
             {currentMenu === MENU_QUALITY && (
