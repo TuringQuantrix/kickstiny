@@ -39,7 +39,11 @@ export default function SettingsButton({ core, container, shouldShow }) {
 
   return (
     <Tooltip.Root>
-      <DropdownMenu.Root modal={false} open={isOpen} onOpenChange={handleOpenChange}>
+      <DropdownMenu.Root
+        modal={false}
+        open={isOpen}
+        onOpenChange={handleOpenChange}
+      >
         <Tooltip.Trigger asChild>
           <DropdownMenu.Trigger asChild>
             <Button variant="tertiary" iconOnly aria-label="Settings">

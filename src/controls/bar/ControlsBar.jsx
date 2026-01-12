@@ -68,7 +68,11 @@ export default function ControlsBar({
         </div>
 
         <div className="controls-bar__right">
-          <SettingsButton core={core} container={barRef.current} shouldShow={shouldShow} />
+          <SettingsButton
+            core={core}
+            container={barRef.current}
+            shouldShow={shouldShow}
+          />
 
           <FullscreenButton
             isFullscreen={isFullscreen}

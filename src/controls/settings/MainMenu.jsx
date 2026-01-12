@@ -3,7 +3,6 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ChevronRight } from "lucide-react";
 import { capitalizeIfString } from "../../utils/format";
 
-
 export default function MainMenu({ onNavigateQuality, selectedQuality }) {
   return (
     <DropdownMenu.Item

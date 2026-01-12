@@ -45,10 +45,10 @@ export function formatUptime(startTime) {
     return null;
   }
 }
-  
+
 export function capitalizeIfString(value) {
-    if (typeof value === "string" && value.length > 0) {
-      return value.charAt(0).toUpperCase() + value.slice(1);
-    }
-    return value;
+  if (typeof value === "string" && value.length > 0) {
+    return value.charAt(0).toUpperCase() + value.slice(1);
   }
+  return value;
+}
