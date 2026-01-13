@@ -70,6 +70,8 @@
 
 .settings-dropdown {
   width: 180px;
+  max-height: var(--radix-dropdown-menu-content-available-height, auto);
+  overflow-y: auto;
 }
 
 @keyframes dropdown-open {

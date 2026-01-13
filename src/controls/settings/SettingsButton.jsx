@@ -62,6 +62,7 @@ export default function SettingsButton({ core, container, shouldShow }) {
             side="top"
             align="end"
             sideOffset={8}
+            collisionPadding={8}
             onClick={(e) => e.stopPropagation()}
           >
             {currentMenu === MENU_MAIN && (
