@@ -22,6 +22,8 @@
   }
 
   &__item {
+    outline: none;
+
     &--active {
       color: dgg.$palette-primary-11;
       background-color: dgg.$palette-primary-3;
@@ -55,6 +57,7 @@
     cursor: pointer;
     padding: dgg.$space-2;
     border-radius: dgg.$semantic-radii-small;
+    outline: none;
 
     &:hover {
       background-color: dgg.$palette-neutral-4;
