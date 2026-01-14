@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useQualitySelector } from "./useQualitySelector";
 
-export function useSettings(core, shouldShow, MENU_MAIN, MENU_QUALITY) {
+export function useSettings(shouldShow, MENU_MAIN, MENU_QUALITY) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentMenu, setCurrentMenu] = useState(MENU_MAIN);
 
@@ -11,9 +10,6 @@ export function useSettings(core, shouldShow, MENU_MAIN, MENU_QUALITY) {
       setCurrentMenu(MENU_MAIN);
     }
   }, [shouldShow]);
-
-  const { selectedQuality, qualityOptions, handleQualityChange } =
-    useQualitySelector(core);
 
   const handleOpenChange = (open) => {
     setIsOpen(open);
@@ -33,10 +29,7 @@ export function useSettings(core, shouldShow, MENU_MAIN, MENU_QUALITY) {
   return {
     isOpen,
     currentMenu,
-    selectedQuality,
-    qualityOptions,
     handleOpenChange,
-    handleQualityChange,
     navigateToQuality,
     navigateBack,
   };

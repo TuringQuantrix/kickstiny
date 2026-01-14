@@ -1,7 +1,6 @@
 import React from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ChevronRight } from "lucide-react";
-import { capitalizeIfString } from "../../utils/format";
 
 export default function MainMenu({ onNavigateQuality, selectedQuality }) {
   return (
@@ -14,7 +13,7 @@ export default function MainMenu({ onNavigateQuality, selectedQuality }) {
     >
       <span>Quality</span>
       <span className="dropdown__item-value">
-        {capitalizeIfString(selectedQuality)}
+        {selectedQuality.label}
         <ChevronRight size={16} />
       </span>
     </DropdownMenu.Item>

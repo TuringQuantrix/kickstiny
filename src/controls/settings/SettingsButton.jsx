@@ -7,6 +7,7 @@ import ControlsTooltip from "../ControlsTooltip.jsx";
 import MainMenu from "./MainMenu.jsx";
 import QualityMenu from "./QualityMenu.jsx";
 import { useSettings } from "./useSettings.js";
+import { useQualitySelector } from "./useQualitySelector.js";
 
 const MENU_MAIN = "MENU_MAIN";
 const MENU_QUALITY = "MENU_QUALITY";
@@ -15,13 +16,13 @@ export default function SettingsButton({ core, container, shouldShow }) {
   const {
     currentMenu,
     handleOpenChange,
-    handleQualityChange,
     isOpen,
     navigateBack,
     navigateToQuality,
-    selectedQuality,
-    qualityOptions,
-  } = useSettings(core, shouldShow, MENU_MAIN, MENU_QUALITY);
+  } = useSettings(shouldShow, MENU_MAIN, MENU_QUALITY);
+
+  const { selectedQuality, qualityOptions, handleQualityChange } =
+    useQualitySelector(core);
 
   return (
     <Tooltip.Root>

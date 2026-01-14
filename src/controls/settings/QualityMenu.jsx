@@ -24,14 +24,18 @@ export default function QualityMenu({
 
       <DropdownMenu.Separator className="dropdown__separator" />
 
-      <DropdownMenu.RadioGroup value={selectedQuality} onValueChange={onChange}>
+      <DropdownMenu.RadioGroup
+        value={selectedQuality.value}
+        onValueChange={onChange}
+      >
         {options.map((option) => (
           <DropdownMenu.RadioItem
             key={option.value}
             value={option.value}
             className={clsx(
               "dropdown__item",
-              selectedQuality === option.value && "dropdown__item--active",
+              selectedQuality.value === option.value &&
+                "dropdown__item--active",
             )}
           >
             {option.label}
