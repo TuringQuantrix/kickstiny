@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 
-export function useSettings(shouldShow, MENU_MAIN, MENU_QUALITY) {
+const MENU_MAIN = "MENU_MAIN";
+const MENU_QUALITY = "MENU_QUALITY";
+
+export function useSettings(shouldShow) {
+  const SETTINGS_CONSTANTS = {
+    MENU_MAIN,
+    MENU_QUALITY,
+  };
+
   const [isOpen, setIsOpen] = useState(false);
   const [currentMenu, setCurrentMenu] = useState(MENU_MAIN);
 
@@ -32,5 +40,6 @@ export function useSettings(shouldShow, MENU_MAIN, MENU_QUALITY) {
     handleOpenChange,
     navigateToQuality,
     navigateBack,
+    SETTINGS_CONSTANTS,
   };
 }

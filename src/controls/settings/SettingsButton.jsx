@@ -9,9 +9,6 @@ import QualityMenu from "./QualityMenu.jsx";
 import { useSettings } from "./useSettings.js";
 import { useQualitySelector } from "./useQualitySelector.js";
 
-const MENU_MAIN = "MENU_MAIN";
-const MENU_QUALITY = "MENU_QUALITY";
-
 export default function SettingsButton({ core, container, shouldShow }) {
   const {
     currentMenu,
@@ -19,7 +16,8 @@ export default function SettingsButton({ core, container, shouldShow }) {
     isOpen,
     navigateBack,
     navigateToQuality,
-  } = useSettings(shouldShow, MENU_MAIN, MENU_QUALITY);
+    SETTINGS_CONSTANTS: { MENU_MAIN, MENU_QUALITY },
+  } = useSettings(shouldShow);
 
   const { selectedQuality, qualityOptions, handleQualityChange } =
     useQualitySelector(core);
