@@ -1,12 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { usePreferences } from "../usePreferences.js";
 
+const AUTO_QUALITY = { label: "Auto", value: "auto" };
+
 export function useQualitySelector(core) {
   const { savedQuality, setSavedQuality } = usePreferences();
-  const [selectedQuality, setSelectedQuality] = useState({
-    label: "Auto",
-    value: "auto",
-  });
+  const [selectedQuality, setSelectedQuality] = useState(AUTO_QUALITY);
   const [qualities, setQualities] = useState([]);
 
   const handleQualityChange = useCallback(
@@ -16,9 +15,7 @@ export function useQualitySelector(core) {
       }
 
       const option =
-        value === "auto"
-          ? { label: "Auto", value: "auto" }
-          : { label: value, value: value };
+        value === "auto" ? AUTO_QUALITY : { label: value, value: value };
 
       setSelectedQuality(option);
 
@@ -44,23 +41,35 @@ export function useQualitySelector(core) {
 
   useEffect(() => {
     const handler = (event) => {
-      const arg = event.data.arg;
-      if (arg?.key !== "qualities") {
+      const { type, arg } = event.data;
+
+      if (arg?.key === "qualities") {
+        if (arg.value?.length) {
+          setQualities(arg.value);
+        }
         return;
       }
 
-      if (!arg.value.length) {
+      if (!savedQuality) {
         return;
       }
 
-      setQualities(arg.value);
+      if (type === 12 && arg?.key === "autoQualityMode") {
+        const shouldBeAuto = savedQuality === "auto";
+        if (arg.value !== shouldBeAuto) {
+          console.debug(
+            `[Kickstiny] Enforcing auto quality mode ${shouldBeAuto} (player changed to ${arg.value})`,
+          );
+          handleQualityChange(savedQuality);
+        }
+      }
     };
 
     core.worker.addEventListener("message", handler);
     return () => {
       core.worker.removeEventListener("message", handler);
     };
-  }, [core]);
+  }, [core, savedQuality, handleQualityChange]);
 
   useEffect(() => {
     if (!savedQuality || !qualities.length) {
@@ -78,7 +87,7 @@ export function useQualitySelector(core) {
   }, [qualities, savedQuality, handleQualityChange]);
 
   const qualityOptions = [
-    { value: "auto", label: "Auto" },
+    AUTO_QUALITY,
     ...qualities.map((q) => ({ value: q.name, label: q.name })),
   ];
 
