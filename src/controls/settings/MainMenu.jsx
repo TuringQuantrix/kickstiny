@@ -25,15 +25,17 @@ export default function MainMenu({
         </span>
       </DropdownMenu.Item>
 
-      <DropdownMenu.Item
-        className="dropdown__item dropdown__item--nav"
-        onSelect={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <span>Dev Mode</span>
-        <Switch checked={isDevMode} onCheckedChange={onDevModeChange} />
-      </DropdownMenu.Item>
+      {process.env.NODE_ENV === "dev" && (
+        <DropdownMenu.Item
+          className="dropdown__item dropdown__item--nav"
+          onSelect={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <span>Dev Mode</span>
+          <Switch checked={isDevMode} onCheckedChange={onDevModeChange} />
+        </DropdownMenu.Item>
+      )}
     </>
   );
 }
