@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { usePreferences } from "../usePreferences";
 
 export function useIvsDebug(core) {
-  const [isIvsDebug, setIsIvsDebug] = useState(false);
+  const { isIvsDebug, setIsIvsDebug } = usePreferences();
 
   useEffect(() => {
     if (!isIvsDebug) {
