@@ -41,23 +41,35 @@ export function useQualitySelector(core) {
 
   useEffect(() => {
     const handler = (event) => {
-      const arg = event.data.arg;
-      if (arg?.key !== "qualities") {
+      const { type, arg } = event.data;
+
+      if (arg?.key === "qualities") {
+        if (arg.value?.length) {
+          setQualities(arg.value);
+        }
         return;
       }
 
-      if (!arg.value.length) {
+      if (!savedQuality) {
         return;
       }
 
-      setQualities(arg.value);
+      if (type === 12 && arg?.key === "autoQualityMode") {
+        const shouldBeAuto = savedQuality === "auto";
+        if (arg.value !== shouldBeAuto) {
+          console.debug(
+            `[Kickstiny] Enforcing auto quality mode ${shouldBeAuto} (player changed to ${arg.value})`,
+          );
+          handleQualityChange(savedQuality);
+        }
+      }
     };
 
     core.worker.addEventListener("message", handler);
     return () => {
       core.worker.removeEventListener("message", handler);
     };
-  }, [core]);
+  }, [core, savedQuality, handleQualityChange]);
 
   useEffect(() => {
     if (!savedQuality || !qualities.length) {
